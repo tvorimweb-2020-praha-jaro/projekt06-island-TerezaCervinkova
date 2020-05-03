@@ -6,7 +6,17 @@
  pozadi     #f5f5f5
  Jedeme retro cernobile, dnes barvy nepotrebujeme.
 */
-
+/*
+pouzivame mobile first pristup
+tj. vychozi styly mimo media query jsou pro nejmensi mobilni zarizeni (telefony)
+s pribyvajici sirkou pridavame media query pro...
+tablety:
+@media (min-width: 500px) {
+}
+notebook/pc:
+@media (min-width: 1000px) {
+}
+*/
 
 body {
     margin: 0;
@@ -20,24 +30,232 @@ body {
 
 /* HLAVICKA */
 
-.titulek {
-    font-family: 'Raleway', serif;
+
+.hlavicka {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(images/island-hlavicka.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
+    overflow: auto;
+    text-align: center;
+    width: 100%;
+    padding: 0px 30px 10px;
 }
 
+.titulek {
+    font-family: 'Raleway', serif;
+    color: #f5f5f5;
+}
+
+.perex {
+    color: #f5f5f5;
+}
+
+.autor {
+    font-style: italic;
+    color: rgba(250, 250, 250, 0.7);
+    position: relative;
+    padding-top: 10px;
+}
+
+.autor::before {
+    position: absolute;
+    content: "";
+    left: 45%;
+    top: 0;
+    width: 10%;
+    border: 1px solid rgba(250, 250, 250, 0.7);;
+  }
+  
 
 /* MENU */
+ul.menu {
+    padding: 0;
+}
 
-
-
+.menu li {
+    display: block;
+    text-align: center;
+    padding: 3px 0px;
+    margin: 0 30px;
+    border-bottom: 0.5px solid rgb(128, 128, 128, 0.2);
+}
+.menu a {
+    font-family: 'Raleway', serif;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: rgb(128, 128, 128, 0.8);
+    font-size: smaller;
+}
+.menu a:hover {
+    font-weight: bold;
+  }
+  
 
 /* OBSAH */
 
+img {
+    width: 100%;
+    height: auto;
+}
 
+h2 {
+    font-family: 'Raleway', serif;
+    padding-left: 30px;
+    margin: 40px 0;
+    position: relative;
+}
 
+h2::after {
+    position: absolute;
+    content: "";
+    bottom: -20px;
+    left: 0;
+    width: 20%;
+    border: 2px solid rgba(0, 110, 255, 0.548);
+}
+  
+p {
+    padding: 0px 30px;
+    width: 100%;
+}
+
+.popisek {
+    text-align: center;
+    margin-top: 0;
+    font-size: smaller;
+    font-family: 'Raleway', serif;
+    color: rgb(128, 128, 128, 0.8);
+    line-height: 1.2;
+}
+
+.popisek a {
+    color: rgb(128, 128, 128, 0.8);
+}
 
 /* FOTOGALERIE */
 
+.galerie .popisek {
+    font-weight: bold;
+}
 
-
+.popisek-copy {
+    font-weight: normal;
+}
 
 /* PATICKA */
+.paticka {
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+    color: gray;
+    font-size: 10px;
+    padding: 5px;
+}
+
+.paticka a {
+    color: gray;
+}
+
+.paticka p {
+    padding: 0 15px;
+}
+
+/* TABLET */
+@media (min-width: 500px) {
+    .menu li {
+        display: inline-block;
+        margin: 0;
+        padding: 3px 40px;
+        border-right: 0.5px solid rgb(128, 128, 128, 0.2);
+    }
+    .menu li:last-child {
+        border-right: none;
+    }
+    ul.menu {
+        text-align: center;
+        margin: 20px 30px 30px;
+        border-top: 0.5px solid rgb(128, 128, 128, 0.2);
+        border-bottom: 0.5px solid rgb(128, 128, 128, 0.2);
+    }
+
+    .popisek {
+        text-align: right;
+        color: #f5f5f5;
+        font-size: small;
+        padding: 0;
+        transform: translate(-10px, -30px);
+      }
+    .popisek a {
+        color: #f5f5f5;
+    }
+
+    .galerie {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 30px;
+    }
+    .foto {
+        flex: 0 0 50%;
+        position: relative;
+    }
+    .foto img {
+        padding: 0;
+    }
+
+    .foto .popisek {
+        display: none;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        padding: 10px;
+        margin: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #f5f5f5;
+        text-align: center;
+        transition: transform 0.5s ease-in-out;
+    }
+    .foto:hover .popisek {
+        display: block;
+        transform: scale(1);
+    }
+}
+/* PC */
+@media (min-width: 1000px) {
+    .kontejner {
+        display: flex;
+    }
+    .menu li {
+        flex: 1 1 25%;
+        display: block;
+        padding: 0;
+        text-align: left;
+        border: 0;
+        border-top: 0.5px solid rgb(128, 128, 128, 0.2);
+    }
+    .menu li:first-child {
+        border-top: none;
+    }
+    .menu a {
+        display: block;
+        padding: 5px 0;
+    }
+    .uvod {
+        flex: 1 1 75%;
+    }
+    .popisek {
+        text-align: right;
+        color: #f5f5f5;
+        transform: translate(-10px, -30px);
+    }
+    .popisek a {
+        color: #f5f5f5;
+    }
+    .lakadla-vpravo {
+        padding-left: 250px;
+      }
+    .foto {
+        flex: 0 0 calc(100% / 3);
+        position: relative;
+        margin: 0;
+      }
+}
